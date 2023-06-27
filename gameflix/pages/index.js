@@ -1,13 +1,42 @@
+import Layout from "@/components/layout/layout";
 import Head from "next/head";
-import styles from "@/styles/Home.module.css";
-import Layout, {siteTitle} from "@/components/layout/layout";
+import Styles from "@/styles/Explore.module.css";
+import { getGamesData, getGenres } from "@/components/functions/getGames";
+import Gamecard from "@/components/cards/gamecard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
+async function getGamesFromGenres(array) {
+	const games = await array.results.map(async (genre) => {
+		return await getGamesData(process.env.API_KEY, genre.slug);
+	});
+	return Promise.all(games);
+}
 
-export default function Home() {
+export async function getStaticProps() {
+	const key = process.env.API_KEY;
+	const genres = await getGenres(key);
+	const allgames = await getGamesFromGenres(genres);
+	const allInfo = allgames.map((games, index) => {
+		return {
+			games,
+			genre: genres.results[index],
+		};
+	});
+	return {
+		props: {
+			allInfo,
+		},
+	};
+}
+
+export default function Home({ allInfo }) {
+	// console.log(data);
+	console.log(allInfo);
 	return (
 		<Layout>
 			<Head>
-				<title>{siteTitle}</title>
+				<title>Explore</title>
 				<meta name="description" content="Gameflix Social Media application" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
@@ -18,9 +47,29 @@ export default function Home() {
 					rel="stylesheet"
 				/>
 			</Head>
-      <main className={`${styles.main}`}>
-        <p className={`${styles.header_2}`}>Hello world</p>
-      </main>
+			<section className={Styles.main}>
+				<div className={Styles.header_container}>
+					<h1 className={Styles.header_text}>Popular Games</h1>
+				</div>
+				<div className={Styles.header_text}></div>
+				{allInfo.map(({ games, genre }) => (
+					<div className={Styles.genre_container}>
+						<div className={Styles.genre_title}>
+							<h3>{genre.name}</h3>
+						</div>
+						<div className={Styles.genre_cards}>
+							{games.results.map((game) => (
+								<Gamecard
+									href={`/game/${game.slug}`}
+									name={game.name}
+									bg={game.background_image}
+									genres={game.genres}
+								></Gamecard>
+							))}
+						</div>
+					</div>
+				))}
+			</section>
 		</Layout>
 	);
 }

@@ -1,6 +1,6 @@
 .game_card {
       position: relative;
-      width: clamp(412px, 100%, 512px);
+      width: clamp(212px, 100%, 450px);
       height: 232px;
       background-size: cover;
       background-position: center top;

@@ -22,15 +22,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/explore": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/explore.js"
-    ],
     "/game/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/game/[id].js"
+    ],
+    "/newlyadded": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/newlyadded.js"
     ]
   },
   "ampFirstPages": []

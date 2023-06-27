@@ -1,6 +1,6 @@
-export async function getGamesData(key, genre = "action") {
+export async function getGamesData(key, slug = "genre=action") {
 	console.log(key);
-	const res = await fetch(`https://api.rawg.io/api/games?key=${key}&genres=${genre}`);
+	const res = await fetch(`https://api.rawg.io/api/games?key=${key}&${slug}`);
 	return res.json();
 }
 export async function getGenres(key) {
