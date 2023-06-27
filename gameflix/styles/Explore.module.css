@@ -1,0 +1,29 @@
+.main {
+}
+.header_container {
+      padding: 1rem 2rem;
+}
+.header_text {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 45px;
+}
+.genre_title {
+      padding: 1rem 2rem;
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 25px;
+}
+.main {
+}
+.genre_cards {
+      width: calc(100vw - 250px);
+      padding: 1rem 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+}

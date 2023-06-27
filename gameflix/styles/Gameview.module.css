@@ -1,0 +1,131 @@
+.background_image {
+      width: 100%;
+      height: auto;
+}
+.game_information_container {
+
+}
+.game_container {
+      display: grid;
+      grid-template-rows: 525px 1fr;
+}
+.hero {
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      overflow: hidden;
+}
+.image {
+      width: 100%;
+      height: 100%;
+      grid-area: 1/1/2/2;
+}
+.overlay {
+      height: 100%;
+      position: relative;
+      grid-area: 1/1/2/2;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 73.44%, #0F0F0F 100%)
+}
+.bg_img {
+      filter: blur(3.5px);
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      
+}
+.hero_image_container {
+      width: 50%;
+}
+.game_information_hero_container {
+      display: flex;
+      flex-direction: row;
+      margin-top: -250px;
+      padding: 0 5rem;
+      gap: 2rem;
+}
+.main_info_container {
+      margin-left: 1rem;
+}
+.main_info_container,
+.buttons_container {
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      gap: .5rem;
+}
+.buttons_container {
+      align-self: flex-end;
+}
+.title {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 45px;
+}
+.info_text {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+}
+.genres,
+.platforms_container {
+      display: flex;
+      flex-direction: row;
+      gap: .3rem;
+}
+.genres {
+
+}
+.button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 800;
+      font-size: 14px;
+      height: 60px;
+}
+.primary {
+      background: #970905;
+      border: none;
+}
+.description_container {
+      padding: 2rem 5rem;
+      display: grid;
+      grid-template-columns: 50% 1fr;
+      gap: 1rem;
+}
+.description_text_container {
+}
+.description_text,
+.description_header_text {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 150%;
+      margin: .3rem 0;
+}
+.description_header_text {
+      font-size: 20px;
+      margin-bottom: 1rem;
+}
+.screenshots_container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .5rem;
+}
+.screenshot {
+      width: 100%;
+}

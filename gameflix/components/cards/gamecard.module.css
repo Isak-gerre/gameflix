@@ -1,0 +1,43 @@
+.game_card {
+      position: relative;
+      width: clamp(412px, 100%, 512px);
+      height: 232px;
+      background-size: cover;
+      background-position: center top;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1rem 2rem;
+      transition: all .2s ease;
+}
+.game_card:hover {
+      transform: scale(1.03);
+}
+.overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, #0F0F0F 100%)
+}
+.game_title {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 23px;
+      z-index: 1;
+}
+.genre_container {
+      display: flex;
+      flex-direction: row;
+      gap: .5rem;
+      padding: .3rem 0;
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 8px;
+      z-index: 2;
+}

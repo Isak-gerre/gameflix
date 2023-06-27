@@ -1,0 +1,50 @@
+
+.footer {
+      padding: 1rem 3rem;
+      display: grid;
+      grid-template-rows: 3fr 1fr;
+}
+.footer_hero {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 0 2rem;
+}
+.footer_navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      border-top: 1px solid #efefef;
+
+}
+.right {
+
+}
+.left {
+
+}
+.copyright {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 185.5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+}
+.h2 {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 800;
+      font-size: 36px;
+      line-height: 185.5%;
+}
+.h4 {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 800;
+      font-size: 24px;
+}
