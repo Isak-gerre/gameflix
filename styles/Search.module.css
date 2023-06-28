@@ -1,0 +1,25 @@
+.genre_cards {
+      width: calc(100vw - 250px);
+      padding: 1rem 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+}
+.search_container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 10rem;
+}
+.searchbar {
+      padding: 1rem 2rem;
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 25px;
+      outline: none;
+      background-color: transparent;
+      border: 1px solid #efefef;
+      border-radius: 10px;
+}

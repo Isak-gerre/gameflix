@@ -14,7 +14,7 @@ export default function Menu() {
 					<p className={`${Styles.menutitle}`}>Browse</p>
 					<Menubutton text="Popular Games" href="/"></Menubutton>
 					<Menubutton text="Newly added" href="/newlyadded"></Menubutton>
-					<Menubutton text="Search" href="/"></Menubutton>
+					<Menubutton text="Search" href="/search"></Menubutton>
 					<p className={`${Styles.menutitle}`}>Genres</p>
 					<Menubutton text="Action" href="/genre/action"></Menubutton>
 					<Menubutton text="Adventure" href="/genre/adventure"></Menubutton>

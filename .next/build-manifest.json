@@ -27,10 +27,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/game/[id].js"
     ],
-    "/newlyadded": [
+    "/search": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/newlyadded.js"
+      "static/chunks/pages/search.js"
     ]
   },
   "ampFirstPages": []
