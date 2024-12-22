@@ -1,4 +1,4 @@
-import Link from "@/GameFlix - Next.js/node_modules/next/link";
+import Link from "next/link";
 import Styles from "./menubutton.module.css"
 
 export default function Menubutton({ text, href, active }) {

@@ -11,12 +11,12 @@ export default function Footer() {
                   </div>
                   <div className={`${Styles.footer_navigation}`}>
                         <div className={`${Styles.right}`}>
-                              <Menubutton text="Dashboard" href="/"></Menubutton>
-                              <Menubutton text="Popular Games" href="/"></Menubutton>
-                              <Menubutton text="Newly added" href="/"></Menubutton>
+                              <Menubutton text="Dashboard" href="/" active={true}></Menubutton>
+                              <Menubutton text="Popular Games" href="/" active={true}></Menubutton>
+                              <Menubutton text="Newly added" href="/" active={true}></Menubutton>
                         </div>
                         <div className={`${Styles.left}`}>
-                              <Menubutton text="Content Creator" href="https://isakgerre.se"></Menubutton>
+                              <Menubutton text="Content Creator" href="https://isakgerre.se" active={true}></Menubutton>
                         </div>
 
                   </div>

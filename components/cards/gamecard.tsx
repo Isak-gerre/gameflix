@@ -1,5 +1,5 @@
 import Styles from "./gamecard.module.css";
-import Link from "@/GameFlix - Next.js/node_modules/next/link";
+import Link from "next/link";
 
 export default function Gamecard(props) {
 	return (

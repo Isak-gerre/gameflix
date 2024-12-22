@@ -1,4 +1,4 @@
-import Head from "@/GameFlix - Next.js/node_modules/next/head";
+import Head from "next/head";
 import Menu from "../menu/menu";
 import Footer from "../footer/footer";
 import Styles from "./layout.module.css";
