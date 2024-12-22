@@ -1,5 +1,5 @@
-import { getGameData, getGameScreenchots, getGameTrailers } from "@/components/functions/getGames";
-import Layout from "@/components/layout/layout";
+import { getGameData, getGameScreenchots, getGameTrailers } from "@/Old structure/components/functions/getGames";
+import Layout from "@/Old structure/components/layout/layout";
 import Styles from "@/styles/Gameview.module.css";
 import Head from "next/head";
 

@@ -1,7 +1,7 @@
 import Head from "@/GameFlix - Next.js/node_modules/next/head";
 import Menu from "../menu/menu";
 import Footer from "../footer/footer";
-import Styles from ".//layout.module.css";
+import Styles from "./layout.module.css";
 
 const name = "Your Name";
 export const siteTitle = "Gameflix";

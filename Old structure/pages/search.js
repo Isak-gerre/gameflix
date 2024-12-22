@@ -1,9 +1,9 @@
 import Styles from "../styles/Search.module.css"
-import Layout from "@/components/layout/layout";
+import Layout from "@/Old structure/components/layout/layout";
 import Head from "next/head";
-import { getGamesData } from "@/components/functions/getGames";
+import { getGamesData } from "@/Old structure/components/functions/getGames";
 import { useState } from "react";
-import Gamecard from "@/components/cards/gamecard";
+import Gamecard from "@/Old structure/components/cards/gamecard";
 
 
 export async function getStaticProps() {
