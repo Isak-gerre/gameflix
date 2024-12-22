@@ -1,10 +1,8 @@
-import Layout from "@/Old structure/components/layout/layout";
+import Layout from "@/components/layout/layout";
 import Head from "next/head";
 import Styles from "@/styles/Explore.module.css";
-import { getGamesData, getGenres } from "@/Old structure/components/functions/getGames";
-import Gamecard from "@/Old structure/components/cards/gamecard";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import { getGamesData, getGenres } from "@/components/functions/getGames";
+import Gamecard from "@/components/cards/gamecard";
 
 async function getGamesFromGenres(array) {
 	const games = await array.results.map(async (genre) => {

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "styles/globals.css",
+    "baseColor": "zinc",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "gameflix/components",
+    "utils": "gameflix/lib/utils",
+    "ui": "gameflix/components/ui",
+    "lib": "gameflix/lib",
+    "hooks": "gameflix/hooks"
+  },
+  "iconLibrary": "lucide"
+}

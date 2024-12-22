@@ -1,9 +1,9 @@
-import Layout from "@/Old structure/components/layout/layout";
+import Layout from "../../layout/layout";
 import Head from "next/head";
 import Styles from "@/styles/Newlyadded.module.css";
-import { getGamesData, getGenres } from "@/Old structure/components/functions/getGames";
-import Gamecard from "@/Old structure/components/cards/gamecard";
+import { getGamesData, getGenres } from "../../../components/functions/getGames";
 import { useState } from "react";
+import Gamecard from "../../../components/cards/gamecard";
 
 export async function getServerSideProps({ params }) {
 	const id = process.env.API_KEY;
@@ -52,7 +52,7 @@ export default function Newlyadded({ games, id, params }) {
 								name={game.name}
 								bg={game.background_image}
 								genres={game.genres}
-							></Gamecard>
+							/>
 						))}
 					</div>
 					<div

@@ -13,7 +13,7 @@ export default function Gamecard(props) {
 			<div className={Styles.genre_container}>
 				{props.genres.map((genre, index) => {
 					if (index < 3) {
-						return <p className={Styles.genres}>{genre.name}</p>;
+						return <p className={Styles.genres} key={index}>{genre.name}</p>;
 					}
 				})}
 			</div>

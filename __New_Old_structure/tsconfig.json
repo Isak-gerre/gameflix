@@ -19,9 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "components/*": ["./components/*"],
-      "lib/*": ["./lib/*"],
+      "gameflix/*": ["./src/*"],
+      "@/*": ["./src/*"],
+      "components/*": ["../components/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
