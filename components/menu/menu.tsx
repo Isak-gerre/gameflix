@@ -1,174 +1,77 @@
-// import Styles from "./menu.module.css";
-// import Menubutton from "../buttons/menu_buttons";
+import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
 
-// export default function Menu() {
-// 	return (
-// 		<nav className={`${Styles.nav}`}>
-// 			<div className={`${Styles.menucontent}`}>
-// 				<div className={`${Styles.logo}`}>
-// 					<p>Gameflix.</p>
-// 				</div>
-// 				<div className={`${Styles.menu}`}>
-// 					<Menubutton text="Popular Games" href="/" active></Menubutton>
-// 					<Menubutton text="Dashboard" href="/" active={true}></Menubutton>
-// 					<p className={`${Styles.menutitle}`}>Browse</p>
-// 					<Menubutton text="Popular Games" href="/" active={true}></Menubutton>
-// 					<Menubutton text="Newly added" href="/newlyadded" active={true}></Menubutton>
-// 					<Menubutton text="Search" href="/search" active={true}></Menubutton>
-// 					<p className={`${Styles.menutitle}`}>Genres</p>
-// 					<Menubutton text="Action" href="/genre/action" active={true}></Menubutton>
-// 					<Menubutton text="Adventure" href="/genre/adventure" active={true}></Menubutton>
-// 					<Menubutton text="RPG" href="/genre/rpg" active={true}></Menubutton>
-// 					<Menubutton text="Shooter" href="/genre/shooter" active={true}></Menubutton>
-// 				</div>
-// 				<div className={`${Styles.menu}`}>
-// 					<Menubutton text="Settings" href="/" active={true}></Menubutton>
-// 					<Menubutton text="Logout" href="/" active={true}></Menubutton>
-// 				</div>
-// 			</div>
-// 		</nav>
-// 	);
-// }
-
-import * as React from "react"
-import Link from "next/link"
- 
-import { cn } from "@/lib/utils"
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar"
+import { Collapsible } from "@/components/ui/collapsible"
 
- 
-const components: { title: string; href: string; description: string }[] = [
+import { useAllGenres } from "components/functions/getGames"
+
+// Menu items.
+const items = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+    title: "Explore",
+    url: "/",
+    icon: Home,
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
+    title: "Newly added",
+    url: "/newlyadded",
+    icon: Inbox,
+  }
 ]
- 
-export function Menu() {
+
+export async function Menu() {
+  const {results: genres} = await useAllGenres();
+  console.log(genres);
+  
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
-                  >
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      shadcn/ui
-                    </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
-                    </p>
-                  </a>
-                </NavigationMenuLink>
-              </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
-              </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
-              </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
+    <Sidebar collapsible="none" className="w-auto">
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarHeader >
+            <h1>Gameflix</h1>
+          </SidebarHeader>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {items.map((item,index) => (
+                <SidebarMenuItem key={`${item.title}-${index}`}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
               ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+            </SidebarMenu>
+          </SidebarGroupContent>
+          <SidebarGroupLabel>Genres</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <Collapsible defaultOpen className="group/collapsible">
+              {genres.map((genre: {name: string, id: number, slug: string} ,index: number ) => (
+                <SidebarMenuItem key={`${genre.id}-${index}`}>
+                  <SidebarMenuButton asChild>
+                    <a href={`/ganre/${genre.slug}`}>
+                      <span>{genre.name}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+              </Collapsible>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
   )
 }
- 
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  )
-})
-ListItem.displayName = "ListItem"

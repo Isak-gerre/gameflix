@@ -1,20 +1,20 @@
 import Head from "next/head";
 import Styles from "../styles/Explore.module.css";
-import { getGamesData, getGenres } from "components/functions/getGames";
+import { useGamesData, useGenres } from "components/functions/getGames";
 import Gamecard from "components/cards/gamecard";
+import Carousel from "../components/cards/Carousel";
 
 async function getGamesFromGenres(array: any[]) {
   const games = await Promise.all(
     array.map(async (genre) => {
-      return getGamesData(process.env.API_KEY, genre.slug);
+      return useGamesData( genre.slug);
     })
   );
   return games;
 }
 
 export default async function ExplorePage() {
-  const key = process.env.API_KEY;
-  const genres = await getGenres(key);
+  const genres = await useGenres();
   const allgames = await getGamesFromGenres(genres.results);
   const allInfo = allgames.map((games, index) => ({
     games,
@@ -48,17 +48,7 @@ export default async function ExplorePage() {
             <div className={Styles.genre_title}>
               <h3>{genre.name}</h3>
             </div>
-            <div className={Styles.genre_cards}>
-              {games.results.map((game: any, index: number) => (
-                <Gamecard
-                  key={`${game.id}-${index}`}
-                  href={`/game/${game.slug}`}
-                  name={game.name}
-                  bg={game.background_image}
-                  genres={game.genres}
-                />
-              ))}
-            </div>
+            <Carousel games={games.results} />
           </div>
         ))}
       </section>

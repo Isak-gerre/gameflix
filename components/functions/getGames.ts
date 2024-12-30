@@ -1,20 +1,30 @@
-export async function getGamesData(key, slug = "genre=action") {
+export async function useGamesData(slug = "genre=action") {
+	const key = process.env.API_KEY;
 	const res = await fetch(`https://api.rawg.io/api/games?key=${key}&${slug}`);
 	return res.json();
 }
-export async function getGenres(key) {
+export async function useGenres() {
+	const key = process.env.API_KEY;
 	const res = await fetch(`https://api.rawg.io/api/genres?key=${key}`);
 	return res.json();
 }
-export async function getGameData(id, key) {
+export async function useAllGenres() {
+	const key = process.env.API_KEY;
+	const res = await fetch(`https://api.rawg.io/api/genres?key=${key}`);
+	return res.json();
+}
+export async function useGameData(id: string ) {
+	const key = process.env.API_KEY;
 	const res = await fetch(`https://api.rawg.io/api/games/${id}?key=${key}`);
 	return res.json();
 }
-export async function getGameScreenchots(id, key) {
+export async function useGameScreenchots(id: string ) {
+	const key = process.env.API_KEY;
 	const res = await fetch(`https://api.rawg.io/api/games/${id}/screenshots?key=${key}`);
 	return res.json();
 }
-export async function getGameTrailers(id, key) {
+export async function useGameTrailers(id: string ) {
+	const key = process.env.API_KEY;
 	const res = await fetch(`https://api.rawg.io/api/games/${id}/movies?key=${key}`);
 	return res.json();
 }

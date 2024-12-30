@@ -1,31 +1,27 @@
-import { getGameData, getGameScreenchots, getGameTrailers } from "@/components/functions/getGames";
-import Layout from "@/components/layout/layout";
+import { useGameData, useGameScreenchots, useGameTrailers } from "@/components/functions/getGames";
 import Styles from "@/styles/Gameview.module.css";
 import Head from "next/head";
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react";
 
-export async function getServerSideProps({ params }) {
-	const gameData = await getGameData(params.id, process.env.API_KEY);
-	const gameScreenshots = await getGameScreenchots(params.id, process.env.API_KEY);
-	const gameTrailers = await getGameTrailers(params.id, process.env.API_KEY);
-	return {
-		props: {
-			gameData: gameData,
-			gameScreenshots: gameScreenshots,
-			gameTrailers: gameTrailers,
-		},
-	};
-}
 
 function DescriptionText(props) {
 	const text = props.text;
 	return text.split("\n").map((str) => <p className={`${Styles.description_text}`}>{str}</p>);
 }
 
-export default function Page({ gameData, gameScreenshots, gameTrailer }) {
-	console.log(gameScreenshots);
-	console.log(gameTrailer);
+export default async function Page({ params}: { params: { id: string } }) {
+
+	console.log(params);
+	const id = (await params).id
+	
+	const gameData =  await useGameData(id, process.env.API_KEY);
+	const gameScreenshots =  await useGameScreenchots(id, process.env.API_KEY);
+	const gameTrailers = await useGameTrailers(id, process.env.API_KEY);
+	
+	console.log(gameData);
+	
 	return (
-		<Layout>
+		<>
 			<Head>
 				<title>Gameflix: {gameData.name}</title>
 				<meta name="description" content="Gameflix Social Media application" />
@@ -55,7 +51,7 @@ export default function Page({ gameData, gameScreenshots, gameTrailer }) {
 						<div className={`${Styles.main_info_container}`}>
 							<p className={`${Styles.title}`}>{gameData.name}</p>
 							<div className={`${Styles.genres}`}>
-								{gameData.genres.map((genre, index) => (
+								{gameData.genres.map((genre: { name: string }, index: number) => (
 									<p key={index} className={`${Styles.info_text}`}>
 										{genre.name}{" "}
 									</p>
@@ -64,19 +60,19 @@ export default function Page({ gameData, gameScreenshots, gameTrailer }) {
 							<p className={`${Styles.info_text}`}>{gameData.developers[0] ? gameData.developers[0].name : ""}</p>
 							<p className={`${Styles.info_text}`}>Metascore: {gameData.metacritic}</p>
 							<div className={`${Styles.platforms_container}`}>
-								{gameData.parent_platforms.map((platform, index) => (
-									<img src={`/images/platforms/${platform.platform.name}.png`} alt="platform" />
+								{gameData.parent_platforms.map((platform: { platform: { name: string } }, index: number) => (
+									<img key={`${platform.platform.name}-${index}`} src={`/images/platforms/${platform.platform.name}.png`} alt="platform" />
 								))}
 							</div>
 						</div>
-						<div className={`${Styles.buttons_container}`}>
+						{/* <div className={`${Styles.buttons_container}`}>
 							<div className={`${Styles.button} ${Styles.primary}`}>
 								<p>Add to playlist</p>
 							</div>
 							<div className={`${Styles.button}`}>
 								<p>Write a review</p>
 							</div>
-						</div>
+						</div> */}
 					</div>
 				</div>
 				<div className={`${Styles.description_container}`}>
@@ -96,6 +92,7 @@ export default function Page({ gameData, gameScreenshots, gameTrailer }) {
 					</div>
 				</div>
 			</section>
-		</Layout>
+		</>
+
 	);
 }

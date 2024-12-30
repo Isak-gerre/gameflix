@@ -5,7 +5,7 @@ export default function Gamecard(props) {
 	return (
 		<Link
 			style={{ backgroundImage: `url(${props.bg})`, textDecoration: "none" }}
-			className={Styles.game_card}
+			className={`${Styles.game_card} min-w-80`}
 			href={props.href}
 		>
 			<div className={Styles.overlay}></div>

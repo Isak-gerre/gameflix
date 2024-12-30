@@ -1,7 +1,13 @@
 import Link from "next/link";
 import Styles from "./menubutton.module.css"
 
-export default function Menubutton({ text, href, active }) {
+interface Props {
+      text: string;
+      href: string;
+      active?: boolean;
+}
+
+export default function Menubutton({ text, href, active = false }: Props) {
       if (active) {
             return (
                   <Link href={href} className={`${Styles.active} ${Styles.button}`}>
@@ -11,7 +17,7 @@ export default function Menubutton({ text, href, active }) {
       }
       else { 
             return (
-                  <Link href={href} className={`${Styles.button}`}>
+                  <Link href={href} className={`${Styles.button} whitespace-nowrap`}>
                         {text}
                   </Link>
             )
